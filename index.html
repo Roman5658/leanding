@@ -67,6 +67,43 @@
       background:#0a0f22;display:flex;align-items:center;justify-content:center;font-weight:800
     }
     footer{margin-top:14px;color:rgba(255,255,255,.55);font-size:12px;text-align:center}
+        .rubrics{
+      margin-top:14px;
+      padding-top:12px;
+      border-top:1px dashed rgba(255,255,255,.15);
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .rubrics h3{
+      margin:0 0 8px;
+      font-size:14px;
+    }
+
+    .rubrics ol{
+      padding-left:18px;
+      margin:6px 0 10px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .rubrics span{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .examples{
+      margin-top:8px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .examples ul{
+      margin:6px 0 0;
+      padding-left:18px;
+    }
+
   </style>
 </head>
 
@@ -100,6 +137,44 @@
         </div>
         <div class="pill" id="counter">1 / 3</div>
       </div>
+            <div class="rubrics">
+        <h3>Формат контенту</h3>
+
+        <ol>
+          <li>
+            <b>Пісні в особистому виконанні</b><br>
+            <span>
+              Іронічні тексти під відомі мотиви <br>
+              Ціль — вірусність і впізнаваність.
+            </span>
+          </li>
+
+          <li>
+            <b>Меми / нарізки</b><br>
+            <span>
+              Реакції, монтажні жарти, адаптація трендів під актуальні події.
+            </span>
+          </li>
+
+          <li>
+            <b>Пісні у виконанні AI-персонажів</b><br>
+            <span>
+              Відомі політичні образи як сатиричний формат.<br>
+              Музика та вокал створені за допомогою ШІ.
+            </span>
+          </li>
+        </ol>
+
+        <div class="examples">
+          <b>Приклади текстів </b>
+          <ul>
+            <li>1 з першого вiдео за 3 минуты я собрался, и в Израель поскакал, за 3 минуты я свалил, мне ЗЕЗЕЗеля помогал,ооо есть теперь тепло в моих руках, есть бабло в моих штанах,</li>
+            <li>2 там де для когось тiльки лютий за вiкном, на моiй вулицi давно уже уже НАБУ, iдух захоплюе, шо я уже не там, пiду собi, на морi полежу</li>
+            <li>3колыбельная Набу по мiсту ходить, друзiв твоiх ловить, Юзик уже втiкае, тiкай i ти,</li>
+          </ul>
+        </div>
+      </div>
+
       <footer>© <span id="year"></span></footer>
     </section>
 
@@ -129,6 +204,12 @@ const VIDEOS = [
     title:"Відео 3",
     desc:"Юзик",
     src:"https://res.cloudinary.com/dhpagkmrq/video/upload/v1769529073/video3_yn4kjf.mp4"
+  },
+   {
+    id:"v4",
+    title:"Відео 4",
+    desc:"Юзик НАБУ",
+    src:"https://res.cloudinary.com/dhpagkmrq/video/upload/v1769537963/video4_tkdrxo.mp4"
   }
 ];
 
