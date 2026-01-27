@@ -3,24 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Моя презентація — 4 відео</title>
-  <meta name="description" content="Коротка презентація у форматі 4 відео. Відкрийте та перегляньте." />
+  <title>Презентація — відео</title>
 
   <style>
     :root{
-      --bg:#0b1020;
-      --card:#0f1733;
-      --text:#eaf0ff;
-      --muted:#a8b3d6;
-      --stroke:rgba(255,255,255,.10);
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
-      --radius: 18px;
-      --gap: 14px;
+      --bg:#0b1020; --card:#0f1733; --text:#eaf0ff; --muted:#a8b3d6;
+      --stroke:rgba(255,255,255,.10); --shadow:0 20px 60px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue";
+      margin:0; font-family:system-ui,Segoe UI,Roboto,Arial;
       color:var(--text);
       background:
         radial-gradient(1100px 500px at 10% 10%, rgba(76,110,245,.22), transparent 60%),
@@ -30,349 +22,172 @@
       min-height:100vh;
     }
     header{
-      position:sticky;
-      top:0;
-      backdrop-filter: blur(10px);
+      position:sticky; top:0; backdrop-filter: blur(10px);
       background: linear-gradient(to bottom, rgba(11,16,32,.85), rgba(11,16,32,.55));
-      border-bottom: 1px solid var(--stroke);
-      z-index: 10;
+      border-bottom:1px solid var(--stroke);
     }
     .wrap{max-width:1100px;margin:0 auto;padding:18px 16px;}
-    .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+    .top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:4px 0 0;color:var(--muted);font-size:13px}
+    .actions{display:flex;gap:10px}
+    button{
+      border:1px solid var(--stroke); background:rgba(255,255,255,.06);
+      color:var(--text); padding:10px 12px; border-radius:14px; cursor:pointer;
+      font-weight:600; font-size:13px;
     }
-    .brand{
-      display:flex;flex-direction:column;gap:4px;
-    }
-    .brand h1{margin:0;font-size:18px;letter-spacing:.2px}
-    .brand p{margin:0;color:var(--muted);font-size:13px}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
-    button, a.btn{
-      appearance:none;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius: 14px;
-      cursor:pointer;
-      font-weight:600;
-      font-size:13px;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      transition:.15s transform, .15s background, .15s border;
-    }
-    button:hover, a.btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.18);}
-    button:active, a.btn:active{transform: translateY(0);}
     main{padding:18px 0 36px}
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: var(--gap);
-      align-items:start;
-    }
-    @media (max-width: 900px){
-      .grid{grid-template-columns:1fr;}
-      header{position:static}
-    }
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr} header{position:static}}
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid var(--stroke);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
+      border:1px solid var(--stroke); border-radius:18px; box-shadow:var(--shadow);
     }
-    .player{
-      padding: 14px;
-    }
+    .player{padding:14px}
     .videoWrap{
-      position:relative;
-      width:100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 14px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background:#070b18;
+      width:100%; aspect-ratio:16/9; border-radius:14px; overflow:hidden;
+      border:1px solid rgba(255,255,255,.12); background:#000;
     }
-    video{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit:contain;
-      background:#000;
-    }
-    .meta{
-      margin-top:10px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:flex-start;
-    }
+    video{width:100%;height:100%;object-fit:contain;background:#000}
+    .meta{margin-top:10px;display:flex;justify-content:space-between}
     .meta h2{margin:0;font-size:16px}
-    .meta p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.35}
+    .meta p{margin:4px 0 0;color:var(--muted);font-size:13px}
     .pill{
-      font-size:12px;
-      color: rgba(255,255,255,.85);
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      padding:6px 10px;
-      border-radius: 999px;
-      white-space:nowrap;
-      height: fit-content;
+      font-size:12px;border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);padding:6px 10px;border-radius:999px
     }
-    .list{
-      padding: 14px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
+    .list{padding:14px;display:flex;flex-direction:column;gap:10px}
     .item{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      padding:10px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.14);
-      cursor:pointer;
-      transition: .15s transform, .15s background, .15s border;
+      display:flex;gap:12px;align-items:center;padding:10px;border-radius:14px;
+      border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.14);cursor:pointer
     }
-    .item:hover{transform: translateY(-1px); background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.16);}
-    .item.active{
-      background: rgba(76,110,245,.14);
-      border-color: rgba(76,110,245,.38);
-    }
+    .item.active{background:rgba(76,110,245,.18);border-color:rgba(76,110,245,.5)}
     .thumb{
-      width: 86px;
-      aspect-ratio: 16/9;
-      border-radius: 12px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background:#0a0f22;
-      flex:0 0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: rgba(255,255,255,.7);
-      font-weight:800;
-      letter-spacing:.6px;
+      width:86px;aspect-ratio:16/9;border-radius:12px;
+      background:#0a0f22;display:flex;align-items:center;justify-content:center;font-weight:800
     }
-    .itext{min-width:0}
-    .itext b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .itext span{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
-    footer{
-      margin-top: 14px;
-      color: rgba(255,255,255,.55);
-      font-size: 12px;
-      text-align:center;
-    }
-    .note{
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px dashed rgba(255,255,255,.18);
-      color: rgba(255,255,255,.72);
-      background: rgba(255,255,255,.04);
-      font-size: 13px;
-      line-height: 1.4;
-    }
-    .kbd{
-      border:1px solid rgba(255,255,255,.18);
-      border-bottom-width:2px;
-      padding:1px 7px;
-      border-radius:8px;
-      background: rgba(0,0,0,.2);
-      font-weight:700;
-      color: rgba(255,255,255,.8);
-      display:inline-block;
-      transform: translateY(-1px);
-    }
+    footer{margin-top:14px;color:rgba(255,255,255,.55);font-size:12px;text-align:center}
   </style>
 </head>
 
 <body>
-<header>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <h1>Презентація (4 відео)</h1>
-        <p>Відкрийте посилання — оберіть відео справа — дивіться як слайди.</p>
-      </div>
 
-      <div class="actions">
-        <button id="prevBtn" type="button">← Назад</button>
-        <button id="nextBtn" type="button">Далі →</button>
-        <button id="copyBtn" type="button">Скопіювати посилання</button>
-      </div>
+<header>
+  <div class="wrap top">
+    <div class="brand">
+      <h1>Відео-презентація</h1>
+      <p>Оберіть відео справа — як слайди</p>
+    </div>
+    <div class="actions">
+      <button id="prevBtn">← Назад</button>
+      <button id="nextBtn">Далі →</button>
+      <button id="copyBtn">Скопіювати посилання</button>
     </div>
   </div>
 </header>
 
 <main>
-  <div class="wrap">
-    <div class="grid">
-      <!-- PLAYER -->
-      <section class="card player" aria-label="Відеоплеєр">
-        <div class="videoWrap">
-          <video id="player" controls playsinline preload="metadata"></video>
+  <div class="wrap grid">
+
+    <section class="card player">
+      <div class="videoWrap">
+        <video id="player" controls playsinline></video>
+      </div>
+      <div class="meta">
+        <div>
+          <h2 id="title">—</h2>
+          <p id="desc">—</p>
         </div>
+        <div class="pill" id="counter">1 / 3</div>
+      </div>
+      <footer>© <span id="year"></span></footer>
+    </section>
 
-        <div class="meta">
-          <div>
-            <h2 id="title">—</h2>
-            <p id="desc">—</p>
-          </div>
-          <div class="pill" id="counter">1 / 4</div>
-        </div>
+    <aside class="card list">
+      <div id="list"></div>
+    </aside>
 
-        <div class="note">
-          Підказки: перемикання <span class="kbd">←</span> / <span class="kbd">→</span>,
-          на телефоні — свайп по списку і тап по відео.
-        </div>
-
-        <footer>© <span id="year"></span> • Відео-лендинг</footer>
-      </section>
-
-      <!-- LIST -->
-      <aside class="card list" aria-label="Список відео">
-        <div id="list"></div>
-      </aside>
-    </div>
   </div>
 </main>
 
 <script>
-  
-
-  // ====== 1) ВСТАВ СЮДА СВОИ ВИДЕО ======
-  // Можно:
-  // - локальные файлы рядом с index.html: "video1.mp4"
-  // - прямые ссылки на .mp4 (CDN/Storage)
-  // - если YouTube — скажи, сделаю версию с YouTube embed
-  const VIDEOS = [
-    {
-      id: "v1",
-      title: "Відео 1",
-      desc: "Миндич",
-      src: "video1.mp4"
-    },
-    {
-      id: "v2",
-      title: "Відео 2 ",
-      desc: "демо / ",
-      src: "video2.mp4"
-    },
-    {
-      id: "v3",
-      title: "Відео 3 ",
-      desc: "Юзик",
-      src: "video3.mp4"
-    },
-    // {
-    //   id: "v4",
-    //   title: "Відео 4 — Фінал",
-    //   desc: "Підсумок і заклик до дії.",
-    //   src: "VIDEO_4.mp4"
-    // }
-  ];
-
-  // ====== ЛОГИКА ======
-  const player = document.getElementById("player");
-  const titleEl = document.getElementById("title");
-  const descEl = document.getElementById("desc");
-  const counterEl = document.getElementById("counter");
-  const listEl = document.getElementById("list");
-
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const copyBtn = document.getElementById("copyBtn");
-
-  let index = 0;
-
-  function setActive(i, { autoplay = false } = {}) {
-    index = Math.max(0, Math.min(VIDEOS.length - 1, i));
-    const v = VIDEOS[index];
-
-    titleEl.textContent = v.title;
-    descEl.textContent = v.desc;
-    counterEl.textContent = `${index + 1} / ${VIDEOS.length}`;
-
-    // подсветка списка
-    [...document.querySelectorAll(".item")].forEach((node, idx) => {
-      node.classList.toggle("active", idx === index);
-    });
-
-    // обновляем src и (по желанию) autoplay
-    if (player.getAttribute("data-current") !== v.src) {
-      player.pause();
-      player.src = v.src;
-      player.load();
-      player.setAttribute("data-current", v.src);
-    }
-    if (autoplay) {
-      player.play().catch(() => {});
-    }
-
-    // в URL добавим #v2, #v3 — удобно делиться конкретным видео
-    history.replaceState(null, "", `#${v.id}`);
+const VIDEOS = [
+  {
+    id:"v1",
+    title:"Відео 1",
+    desc:"Миндич",
+    src:"https://res.cloudinary.com/dhpagkmrq/video/upload/v1769528827/video1_gwzydx.mp4"
+  },
+  {
+    id:"v2",
+    title:"Відео 2",
+    desc:"Демо",
+    src:"https://res.cloudinary.com/dhpagkmrq/video/upload/v1769529039/video2_i2ahu6.mp4"
+  },
+  {
+    id:"v3",
+    title:"Відео 3",
+    desc:"Юзик",
+    src:"https://res.cloudinary.com/dhpagkmrq/video/upload/v1769529073/video3_yn4kjf.mp4"
   }
+];
 
-  function renderList() {
-    listEl.innerHTML = "";
-    VIDEOS.forEach((v, idx) => {
-      const item = document.createElement("div");
-      item.className = "item";
-      item.setAttribute("role", "button");
-      item.setAttribute("tabindex", "0");
-      item.innerHTML = `
-        <div class="thumb">${idx + 1}</div>
-        <div class="itext">
-          <b>${v.title}</b>
-          <span>${v.desc}</span>
-        </div>
-      `;
-      item.addEventListener("click", () => setActive(idx, { autoplay: true }));
-      item.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") setActive(idx, { autoplay: true });
-      });
-      listEl.appendChild(item);
-    });
-  }
+const player=document.getElementById("player");
+const titleEl=document.getElementById("title");
+const descEl=document.getElementById("desc");
+const counterEl=document.getElementById("counter");
+const listEl=document.getElementById("list");
 
-  function gotoFromHash() {
-    const hash = (location.hash || "").replace("#", "").trim();
-    if (!hash) return;
-    const i = VIDEOS.findIndex(v => v.id === hash);
-    if (i >= 0) setActive(i);
-  }
+let index=0;
 
-  prevBtn.addEventListener("click", () => setActive(index - 1, { autoplay: true }));
-  nextBtn.addEventListener("click", () => setActive(index + 1, { autoplay: true }));
+function setActive(i){
+  index=Math.max(0,Math.min(VIDEOS.length-1,i));
+  const v=VIDEOS[index];
 
-  copyBtn.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(location.href);
-      copyBtn.textContent = "Посилання скопійовано ✓";
-      setTimeout(() => (copyBtn.textContent = "Скопіювати посилання"), 1200);
-    } catch {
-      alert("Не вдалося скопіювати. Скопіюйте вручну з адресного рядка.");
-    }
+  titleEl.textContent=v.title;
+  descEl.textContent=v.desc;
+  counterEl.textContent=`${index+1} / ${VIDEOS.length}`;
+
+  [...document.querySelectorAll(".item")].forEach((n,idx)=>{
+    n.classList.toggle("active",idx===index);
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") setActive(index - 1, { autoplay: true });
-    if (e.key === "ArrowRight") setActive(index + 1, { autoplay: true });
-  });
+  player.src=v.src;
+  player.load();
+  history.replaceState(null,"",`#${v.id}`);
+}
 
-  // init
-  document.getElementById("year").textContent = new Date().getFullYear();
-  renderList();
-  gotoFromHash();
-  setActive(index);
+function renderList(){
+  listEl.innerHTML="";
+  VIDEOS.forEach((v,idx)=>{
+    const d=document.createElement("div");
+    d.className="item";
+    d.innerHTML=`<div class="thumb">${idx+1}</div>
+      <div><b>${v.title}</b><div style="color:#a8b3d6;font-size:12px">${v.desc}</div></div>`;
+    d.onclick=()=>setActive(idx);
+    listEl.appendChild(d);
+  });
+}
+
+function fromHash(){
+  const h=location.hash.replace("#","");
+  const i=VIDEOS.findIndex(v=>v.id===h);
+  if(i>=0) index=i;
+}
+
+document.getElementById("prevBtn").onclick=()=>setActive(index-1);
+document.getElementById("nextBtn").onclick=()=>setActive(index+1);
+document.getElementById("copyBtn").onclick=async()=>{
+  await navigator.clipboard.writeText(location.href);
+  alert("Посилання скопійовано");
+};
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+renderList();
+fromHash();
+setActive(index);
 </script>
+
 </body>
 </html>
